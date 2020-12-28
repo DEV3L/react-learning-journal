@@ -1,70 +1,90 @@
-# Getting Started with Create React App
+# react-learning-journal
+React front end to visualize learning journal events.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Prerequisites
+- Nodejs
+- yarn || npm
 
-## Available Scripts
 
-In the project directory, you can run:
+## Environment Variables (.env)
 
-### `yarn start`
+**Firebase**
+```
+REACT_APP_FIREBASE_API_KEY
+REACT_APP_FIREBASE_AUTH_DOMAIN
+REACT_APP_FIREBASE_DATABASE_URL
+REACT_APP_FIREBASE_PROJECT_ID
+REACT_APP_FIREBASE_STORAGE_BUCKET
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+```
+![firebase](https://image.ibb.co/maGOnS/image.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+**Google Analytics**
+```
+REACT_APP_GA_TRACKING_NUMBER  # Google Analytics tracking number
+```
 
-### `yarn test`
+**Hotjar**
+```
+REACT_APP_HJID  # Hotjar ID
+REACT_APP_HJSV  # Hotjar Snippet Version
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn install
+yarn start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Milestones
+01. **20180522**: Project Inception 
+02. **20180526**: Hosted on Netlify
+    - [Brain Bit - Ledger](https://brain-bit-ledger.netlify.com/)
+03. **20180527**: Login page with logo added
+04. **20180921**: Kick the dust off the project and push up previously prending changes
+05. **20181014**: Setup authentication with Google using react-auth-firebase
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## References
+- [CoderJourney Learn React Video Tutorials](https://www.youtube.com/playlist?list=PLbG4OyfwIxjFKJE_ZVZxsSt1ESc9S7kFb)
+- [Add React to a New Application](https://reactjs.org/docs/add-react-to-a-new-app.html)
+- [Netlify Continuous Deployment](https://www.netlify.com/docs/continuous-deployment/)
+![netlify deployment configuration](https://image.ibb.co/iXWbVo/Screen_Shot_2018_05_26_at_3_46_04_PM.png)
+- [Bootstrap Login Template](https://bootsnipp.com/snippets/dldxB)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Interesting Components
+- [React Circular Progressbar](https://www.npmjs.com/package/react-circular-progressbar)
+- [AnimakitRotator](https://animakit.github.io/#/)
+- [react-auth-firebase](https://www.npmjs.com/package/react-auth-firebase_)
+  - [react-auth-firebase sandbox](https://codesandbox.io/s/v6w6r6521y)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Recommended Dev Tools
+- [Visual Studio Code](https://code.visualstudio.com/)
+- [WebStorm](https://www.jetbrains.com/webstorm/)
+- [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en)
+- ... [Vim](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Using Visual Studio Code
+### Interactive Debugging React JavaScript
+The launch configuration for the project is checked in!
 
-### Code Splitting
+## Using WebStorm
+### Interactive Debugging React JavaScript
+![javascript_react_configuration](https://image.ibb.co/grjXGn/Screen_Shot_2018_04_17_at_5_23_12_PM.png)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Interactive Debugging Jest Tests
+![jest_configuration](https://image.ibb.co/gnY5XS/Screen_Shot_2018_04_16_at_5_20_22_PM.png)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## TODO
+- Add `CircleCI`
+- Add `Monitoring Framework (Rollbar?)`
+- Add `Acceptance Tests Framework`
+- Add `Feature Toggles`
