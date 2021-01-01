@@ -2,6 +2,8 @@
 
 React front end to visualize learning journal events.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/92add024-586f-4337-a5a6-c8c6dc5f5d7a/deploy-status)](https://app.netlify.com/sites/learning-journal/deploys)
+
 ## Prerequisites
 
 - Nodejs
