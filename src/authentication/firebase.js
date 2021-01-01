@@ -12,4 +12,5 @@ const app = firebase.initializeApp({
 });
 
 export const auth = app.auth();
+export const twitterProvider = new firebase.auth.TwitterAuthProvider();
 export default app;

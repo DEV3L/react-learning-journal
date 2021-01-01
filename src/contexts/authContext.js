@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { auth } from '../authentication/firebase';
+import { auth, twitterProvider } from '../authentication/firebase';
 
 const AuthContext = React.createContext();
 
@@ -9,30 +9,18 @@ export function useAuth() {
 
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
+
   const [loading, setLoading] = useState(true);
 
-  function signUp(email, password) {
-    return auth.createUserWithEmailAndPassword(email, password);
-  }
-
-  function login(email, password) {
-    return auth.signInWithEmailAndPassword(email, password);
-  }
-
-  function resetPassword(email) {
-    return auth.sendPasswordResetEmail(email);
-  }
-
   function logout() {
+    localStorage.removeItem('twitterHandle');
     return auth.signOut();
   }
 
-  function updateEmail(email) {
-    return currentUser.updateEmail(email);
-  }
-
-  function updatePassword(password) {
-    return currentUser.updatePassword(password);
+  function loginWithTwitterPopup() {
+    return auth.signInWithPopup(twitterProvider).then((userCredential) => {
+      localStorage.setItem('twitterHandle', userCredential.additionalUserInfo.username);
+    });
   }
 
   useEffect(() => {
@@ -50,12 +38,7 @@ export function AuthProvider({ children }) {
 
   const value = {
     currentUser,
-    login,
-    signUp,
-    resetPassword,
-    logout,
-    updateEmail,
-    updatePassword,
+    loginWithTwitterPopup,
   };
 
   return <AuthContext.Provider value={value}>{!loading && children}</AuthContext.Provider>;
