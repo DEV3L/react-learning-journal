@@ -17,13 +17,14 @@ export default function Dashboard() {
 
   const history = useHistory();
 
-  useEffect(async () => {
-    console.log('');
+  useEffect(() => {
+    async function fetchData() {
+      const dataResponse = await axios.get('https://dev3l-learning-journal.herokuapp.com/ping');
+      const message = dataResponse.data;
 
-    const dataResponse = await axios.get('https://dev3l-learning-journal.herokuapp.com/ping');
-    const message = dataResponse.data;
-
-    setMessage(message);
+      setMessage(message);
+    }
+    fetchData();
   }, []);
 
   async function handleLogout() {
