@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Alert, Button, Card } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+
+import axios from 'axios';
 
 import { useAuth } from '../contexts/authContext';
 
@@ -11,7 +13,18 @@ export default function Dashboard() {
 
   const [error, setError] = useState('');
 
+  const [message, setMessage] = useState('');
+
   const history = useHistory();
+
+  useEffect(async () => {
+    console.log('');
+
+    const dataResponse = await axios.get('https://dev3l-learning-journal.herokuapp.com/ping');
+    const message = dataResponse.data;
+
+    setMessage(message);
+  }, []);
 
   async function handleLogout() {
     setError('');
@@ -38,6 +51,12 @@ export default function Dashboard() {
             <strong>Name: </strong>
             {currentUser.displayName}
           </p>
+          {message && (
+            <p>
+              <strong>Server Message: </strong>
+              {message}
+            </p>
+          )}
         </Card.Body>
         <div className="w-100 text-center">
           <Button variant="link" onClick={handleLogout}>
