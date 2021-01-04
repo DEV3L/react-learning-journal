@@ -32,7 +32,7 @@ export default function Dashboard() {
       setAuthenticatedMessage(authenticatedMessage);
     }
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   async function handleLogout() {
     setError('');
