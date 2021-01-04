@@ -4,8 +4,10 @@ import { Alert, Button, Card } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 
 import axios from 'axios';
+import { axiosRequest } from '../services/axios_service';
 
 import { useAuth } from '../contexts/authContext';
+import { SERVER_API_URL } from '../constants/constants';
 
 export default function Dashboard() {
   const { currentUser, logout } = useAuth();
@@ -14,15 +16,20 @@ export default function Dashboard() {
   const [error, setError] = useState('');
 
   const [message, setMessage] = useState('');
+  const [authenticatedMessage, setAuthenticatedMessage] = useState('');
 
   const history = useHistory();
 
   useEffect(() => {
     async function fetchData() {
-      const dataResponse = await axios.get('https://dev3l-learning-journal.herokuapp.com/ping');
+      const dataResponse = await axios.get(SERVER_API_URL + '/ping');
       const message = dataResponse.data;
-
       setMessage(message);
+
+      const request = await axiosRequest(currentUser);
+      const authenticatedDataResponse = await request.get(SERVER_API_URL + '/ping_authenticated');
+      const authenticatedMessage = authenticatedDataResponse.data;
+      setAuthenticatedMessage(authenticatedMessage);
     }
     fetchData();
   }, []);
@@ -54,8 +61,16 @@ export default function Dashboard() {
           </p>
           {message && (
             <p>
-              <strong>Server Message: </strong>
+              <strong>Server Message:</strong>
+              <br />
               {message}
+            </p>
+          )}
+          {authenticatedMessage && (
+            <p>
+              <strong>Authenticated Server Message:</strong>
+              <br />
+              {authenticatedMessage}
             </p>
           )}
         </Card.Body>
